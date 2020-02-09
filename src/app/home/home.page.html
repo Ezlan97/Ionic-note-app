@@ -8,7 +8,7 @@
 
 <ion-content>
   <cdk-virtual-scroll-viewport cdkDropList itemSize="20" class="example-viewport" (cdkDropListDropped)="drop($event)">
-    <ion-item *cdkVirtualFor="let p of notes" class="example-item" href="/tabs/(details:{{p.id}})" cdkDrag>
+    <ion-item *cdkVirtualFor="let p of notes" class="example-item" [routerLink]="['/note-detail', p.id]" routerDirection="forward" cdkDrag>
       <ion-icon name="desktop" slot="start"></ion-icon>
       {{p.title}}
       <div class="item-note" slot="end">

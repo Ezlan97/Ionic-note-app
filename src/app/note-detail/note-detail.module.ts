@@ -8,12 +8,17 @@ import { NoteDetailPageRoutingModule } from './note-detail-routing.module';
 
 import { NoteDetailPage } from './note-detail.page';
 
+import { MatProgressSpinnerModule, MatCardModule, MatIconModule } from '@angular/material';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NoteDetailPageRoutingModule
+    NoteDetailPageRoutingModule,
+    MatProgressSpinnerModule,
+    MatCardModule,
+    MatIconModule
   ],
   declarations: [NoteDetailPage]
 })

@@ -33,6 +33,7 @@ export class ApiService {
   
   getNote(id: any): Observable<Note> {
     const url = `${apiUrl}/show/${id}`;
+    console.log(url);
     return this.http.get<Note>(url).pipe(
       tap(_ => console.log(`fetched note id=${id}`)),
       catchError(this.handleError<Note>(`getNote id=${id}`))
