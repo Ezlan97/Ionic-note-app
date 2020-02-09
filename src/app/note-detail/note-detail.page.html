@@ -1,9 +1,27 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>note-detail</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Note Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div class="example-container mat-elevation-z8">
+    <div class="example-loading-shade"
+          *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title><h2>{{note.title}}</h2></mat-card-title>
+        <mat-card-subtitle>{{note.description}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions>
+        <a mat-flat-button color="primary" (click)="editNote(note._id)"><mat-icon>edit</mat-icon></a>
+        <a mat-flat-button color="warn" (click)="deleteNote(note._id)"><mat-icon>delete</mat-icon></a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </ion-content>

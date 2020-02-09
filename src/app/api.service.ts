@@ -40,7 +40,7 @@ export class ApiService {
   }
   
   addNote(Note: Note): Observable<Note> {
-    return this.http.post<Note>(apiUrl, note, httpOptions).pipe(
+    return this.http.post<Note>(apiUrl, Note, httpOptions).pipe(
       tap((note: Note) => console.log(`added note w/ id=${note._id}`)),
       catchError(this.handleError<Note>('addNote'))
     );
@@ -48,7 +48,7 @@ export class ApiService {
   
   updateNote(id: any, Note: any): Observable<any> {
     const url = `${apiUrl}/${id}`;
-    return this.http.put(url, note, httpOptions).pipe(
+    return this.http.put(url, Note, httpOptions).pipe(
       tap(_ => console.log(`updated Note id=${id}`)),
       catchError(this.handleError<any>('updateNote'))
     );
