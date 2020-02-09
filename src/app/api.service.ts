@@ -5,7 +5,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { Note } from './note';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
 };
 const apiUrl = 'http://localhost:8000/api/notes/';
 
