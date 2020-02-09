@@ -5,7 +5,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {
-    path: 'note-detail',
+    path: 'note-detail/:id',
     loadChildren: () => import('./note-detail/note-detail.module').then( m => m.NoteDetailPageModule)
   },
   {
@@ -13,7 +13,7 @@ const routes: Routes = [
     loadChildren: () => import('./note-create/note-create.module').then( m => m.NoteCreatePageModule)
   },
   {
-    path: 'note-edit',
+    path: 'note-edit/:id',
     loadChildren: () => import('./note-edit/note-edit.module').then( m => m.NoteEditPageModule)
   },
 ];
