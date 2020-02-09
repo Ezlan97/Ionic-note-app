@@ -8,12 +8,32 @@ import { NoteCreatePageRoutingModule } from './note-create-routing.module';
 
 import { NoteCreatePage } from './note-create.page';
 
+import {
+  MatInputModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatSortModule,
+  MatTableModule,
+  MatIconModule,
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule } from '@angular/material';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NoteCreatePageRoutingModule
+    NoteCreatePageRoutingModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatSortModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule
   ],
   declarations: [NoteCreatePage]
 })
