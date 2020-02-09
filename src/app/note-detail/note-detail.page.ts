@@ -11,7 +11,7 @@ import { Note } from '../note';
 })
 export class NoteDetailPage implements OnInit {
 
-  note: Note = { _id: null, title: '', description: ''};
+  note: Note = { id: null, title: '', body: ''};
   isLoadingResults = false;
 
   constructor(

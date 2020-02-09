@@ -7,7 +7,7 @@ import { Note } from './note';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = 'localhost:8000/api/notes/';
+const apiUrl = 'http://localhost:8000/api/notes/';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class ApiService {
   }
   
   getNote(id: any): Observable<Note> {
-    const url = `${apiUrl}/${id}`;
+    const url = `${apiUrl}/show/${id}`;
     return this.http.get<Note>(url).pipe(
       tap(_ => console.log(`fetched note id=${id}`)),
       catchError(this.handleError<Note>(`getNote id=${id}`))
@@ -40,14 +40,15 @@ export class ApiService {
   }
   
   addNote(Note: Note): Observable<Note> {
-    return this.http.post<Note>(apiUrl, Note, httpOptions).pipe(
-      tap((note: Note) => console.log(`added note w/ id=${note._id}`)),
+    const url = `${apiUrl}/create/`;
+    return this.http.post<Note>(url, Note, httpOptions).pipe(
+      tap((note: Note) => console.log(`added note w/ id=${note.id}`)),
       catchError(this.handleError<Note>('addNote'))
     );
   }
   
   updateNote(id: any, Note: any): Observable<any> {
-    const url = `${apiUrl}/${id}`;
+    const url = `${apiUrl}/update/${id}`;
     return this.http.put(url, Note, httpOptions).pipe(
       tap(_ => console.log(`updated Note id=${id}`)),
       catchError(this.handleError<any>('updateNote'))
@@ -55,8 +56,7 @@ export class ApiService {
   }
   
   deleteNote(id: any): Observable<Note> {
-    const url = `${apiUrl}/${id}`;
-  
+    const url = `${apiUrl}/delete/${id}`;
     return this.http.delete<Note>(url, httpOptions).pipe(
       tap(_ => console.log(`deleted Note id=${id}`)),
       catchError(this.handleError<Note>('deleteNote'))

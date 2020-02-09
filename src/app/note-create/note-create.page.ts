@@ -22,7 +22,7 @@ export class NoteCreatePage implements OnInit {
   matcher = new MyErrorStateMatcher();
   noteForm: FormGroup;
   title = '';
-  description = '';
+  body = '';
   isLoadingResults = false;
 
   constructor(
@@ -35,7 +35,7 @@ export class NoteCreatePage implements OnInit {
     this.isLoadingResults = true;
     this.api.addNote(this.noteForm.value)
       .subscribe((res: any) => {
-          const id = res._id;
+          const id = res.id;
           this.isLoadingResults = false;
           this.router.navigate(['/note-detail', id]);
         }, (err: any) => {
@@ -47,7 +47,7 @@ export class NoteCreatePage implements OnInit {
   ngOnInit() {
     this.noteForm = this.formBuilder.group({
       'title' : [null, Validators.required],
-      'description' : [null, Validators.required],
+      'body' : [null, Validators.required],
     });
   }
 

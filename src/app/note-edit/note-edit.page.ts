@@ -20,9 +20,9 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class NoteEditPage implements OnInit {
 
   noteForm: FormGroup;
-  _id = '';
+  id = '';
   title = '';
-  description = '';
+  body = '';
   isLoadingResults = false;
   matcher = new MyErrorStateMatcher();
 
@@ -35,19 +35,19 @@ export class NoteEditPage implements OnInit {
 
   getNote(id: any) {
     this.api.getNote(id).subscribe((data: any) => {
-      this._id = data._id;
+      this.id = data.id;
       this.noteForm.setValue({
         title: data.title,
-        description: data.description,
+        body: data.body,
       });
     });
   }
 
   onFormSubmit() {
     this.isLoadingResults = true;
-    this.api.updateNote(this._id, this.noteForm.value)
+    this.api.updateNote(this.id, this.noteForm.value)
       .subscribe((res: any) => {
-          const id = res._id;
+          const id = res.id;
           this.isLoadingResults = false;
           this.router.navigate(['/note-detail', id]);
         }, (err: any) => {
@@ -58,15 +58,14 @@ export class NoteEditPage implements OnInit {
   }
 
   noteDetails() {
-    this.router.navigate(['/note-detail', this._id]);
+    this.router.navigate(['/note-detail', this.id]);
   }
 
   ngOnInit() {
     this.getNote(this.route.snapshot.params['id']);
     this.noteForm = this.formBuilder.group({
-      'prod_name' : [null, Validators.required],
-      'prod_desc' : [null, Validators.required],
-      'prod_price' : [null, Validators.required]
+      'title' : [null, Validators.required],
+      'body' : [null, Validators.required],
     });
   }
 

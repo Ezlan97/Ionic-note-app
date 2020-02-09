@@ -16,11 +16,11 @@
     <mat-card class="example-card">
       <mat-card-header>
         <mat-card-title><h2>{{note.title}}</h2></mat-card-title>
-        <mat-card-subtitle>{{note.description}}</mat-card-subtitle>
+        <mat-card-subtitle>{{note.body}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-actions>
-        <a mat-flat-button color="primary" (click)="editNote(note._id)"><mat-icon>edit</mat-icon></a>
-        <a mat-flat-button color="warn" (click)="deleteNote(note._id)"><mat-icon>delete</mat-icon></a>
+        <a mat-flat-button color="primary" (click)="editNote(note.id)"><mat-icon>edit</mat-icon></a>
+        <a mat-flat-button color="warn" (click)="deleteNote(note.id)"><mat-icon>delete</mat-icon></a>
       </mat-card-actions>
     </mat-card>
   </div>

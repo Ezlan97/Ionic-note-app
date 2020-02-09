@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/note-detail/{{_id}}"></ion-back-button>
+      <ion-back-button defaultHref="/note-detail/{{id}}"></ion-back-button>
     </ion-buttons>
     <ion-title>Note Edit</ion-title>
   </ion-toolbar>
@@ -23,10 +23,10 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Description" formControlName="description"
+          <input matInput placeholder="Detail" formControlName="body"
                  [errorStateMatcher]="matcher">
           <mat-error>
-            <span *ngIf="!noteForm.get('description').valid && noteForm.get('description').touched">Please enter Note Description</span>
+            <span *ngIf="!noteForm.get('body').valid && noteForm.get('body').touched">Please enter Note detail</span>
           </mat-error>
         </mat-form-field>
         <div class="button-row">
