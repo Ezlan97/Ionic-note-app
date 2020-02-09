@@ -10,10 +10,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+//theme, web animation and gesture
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, DragDropModule, ScrollingModule],
   providers: [
     StatusBar,
     SplashScreen,
