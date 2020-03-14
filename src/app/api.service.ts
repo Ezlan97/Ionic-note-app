@@ -23,6 +23,7 @@ export class ApiService {
     };
   }
 
+  //all note
   getNotes(): Observable<Note[]> {
     return this.http.get<Note[]>(apiUrl)
       .pipe(
@@ -31,6 +32,7 @@ export class ApiService {
       );
   }
   
+  //show
   getNote(id: any): Observable<Note> {
     const url = `${apiUrl}/show/${id}`;
     console.log(url);
@@ -40,6 +42,7 @@ export class ApiService {
     );
   }
   
+  //create new note
   addNote(Note: Note): Observable<Note> {
     const url = `${apiUrl}/create/`;
     return this.http.post<Note>(url, Note, httpOptions).pipe(
@@ -48,6 +51,7 @@ export class ApiService {
     );
   }
   
+  //update
   updateNote(id: any, Note: any): Observable<any> {
     const url = `${apiUrl}/update/${id}`;
     return this.http.put(url, Note, httpOptions).pipe(
@@ -56,6 +60,7 @@ export class ApiService {
     );
   }
   
+  //delete
   deleteNote(id: any): Observable<Note> {
     const url = `${apiUrl}/delete/${id}`;
     return this.http.delete<Note>(url, httpOptions).pipe(
